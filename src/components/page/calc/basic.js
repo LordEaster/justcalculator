@@ -7,58 +7,39 @@ export default function CalcBasic() {
     useEffect(() => {
         document.title = "Basic Calculator | Math tools";
 
-        document.addEventListener("keydown", detectKeyDown, true);
+        // document.addEventListener("keyup", detectKeyDown);
     });
-
-    const detectKeyDown = (event) => {
-        if (event.key === "Enter") {
-            calculate();
-        } else if (event.key === "Escape") {
-            clear();
-        } else if (event.key === "Backspace") {
-            deleteLast();
-        } else if (event.key === "Delete") {
-            clear();
-        } else if (event.key === "0") {
-            updateCalc("0");
-        } else if (event.key === "1") {
-            updateCalc("1");
-        } else if (event.key === "2") {
-            updateCalc("2");
-        } else if (event.key === "3") {
-            updateCalc("3");
-        } else if (event.key === "4") {
-            updateCalc("4");
-        } else if (event.key === "5") {
-            updateCalc("5");
-        } else if (event.key === "6") {
-            updateCalc("6");
-        } else if (event.key === "7") {
-            updateCalc("7");
-        } else if (event.key === "8") {
-            updateCalc("8");
-        } else if (event.key === "9") {
-            updateCalc("9");
-        } else if (event.key === ".") {
-            updateCalc(".");
-        } else if (event.key === "+") {
-            updateCalc("+");
-        } else if (event.key === "-") {
-            updateCalc("-");
-        } else if (event.key === "*") {
-            updateCalc("*");
-        } else if (event.key === "/") {
-            updateCalc("/");
-        } else {
-            return;
-        }
-
-    }
 
     const [calc, setCalc] = useState("");
     const [result, setResult] = useState("");
 
+    // const keys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '+', '-', '*', '/'];
+    // const keysplus = ['Enter', 'Backspace', 'Delete', 'Escape'];
     const ops = ['/', '*', '-', '+', '.'];
+
+    // const detectKeyDown = (event) => {
+
+    //     console.log(event.key);
+    //     event.preventDefault();
+    //     if (!keys.includes(event.key) && !keysplus.includes(event.key)) {
+    //         return;
+    //     } 
+    //     if (keys.includes(event.key)) {
+    //         updateCalc(event.key);
+    //     }
+    //     else if (event.key === "Enter") {
+    //         calculate();
+    //     } else if (event.key === "Escape") {
+    //         clear();
+    //     } else if (event.key === "Backspace") {
+    //         deleteLast();
+    //     } else if (event.key === "Delete") {
+    //         clear();
+    //     } else  {
+    //         return;
+    //     }
+
+    // }
 
     const updateCalc = (value) => {
 
@@ -115,7 +96,7 @@ export default function CalcBasic() {
 
             <div className="digits">
                 <button className="free" disabled></button>
-                <button className="ops" onClick={clear}>AC</button>
+                <button id="clear" className="ops" onClick={clear}>AC</button>
                 <button className="ops" onClick={deleteLast}><span class="material-symbols-rounded">backspace</span></button>
                 <button className="ops" onClick={() => updateCalc('/')}>÷</button>
 
