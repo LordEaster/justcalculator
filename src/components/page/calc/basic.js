@@ -6,7 +6,54 @@ import "../../css/calc/basic.scss";
 export default function CalcBasic() {
     useEffect(() => {
         document.title = "Basic Calculator | Math tools";
+
+        document.addEventListener("keydown", detectKeyDown, true);
     });
+
+    const detectKeyDown = (event) => {
+        if (event.key === "Enter") {
+            calculate();
+        } else if (event.key === "Escape") {
+            clear();
+        } else if (event.key === "Backspace") {
+            deleteLast();
+        } else if (event.key === "Delete") {
+            clear();
+        } else if (event.key === "0") {
+            updateCalc("0");
+        } else if (event.key === "1") {
+            updateCalc("1");
+        } else if (event.key === "2") {
+            updateCalc("2");
+        } else if (event.key === "3") {
+            updateCalc("3");
+        } else if (event.key === "4") {
+            updateCalc("4");
+        } else if (event.key === "5") {
+            updateCalc("5");
+        } else if (event.key === "6") {
+            updateCalc("6");
+        } else if (event.key === "7") {
+            updateCalc("7");
+        } else if (event.key === "8") {
+            updateCalc("8");
+        } else if (event.key === "9") {
+            updateCalc("9");
+        } else if (event.key === ".") {
+            updateCalc(".");
+        } else if (event.key === "+") {
+            updateCalc("+");
+        } else if (event.key === "-") {
+            updateCalc("-");
+        } else if (event.key === "*") {
+            updateCalc("*");
+        } else if (event.key === "/") {
+            updateCalc("/");
+        } else {
+            return;
+        }
+
+    }
 
     const [calc, setCalc] = useState("");
     const [result, setResult] = useState("");
@@ -14,6 +61,10 @@ export default function CalcBasic() {
     const ops = ['/', '*', '-', '+', '.'];
 
     const updateCalc = (value) => {
+
+        if (calc === '' && value === '.') {
+            setCalc('0.');
+        }
 
         if (ops.includes(value) && ops.includes(calc.slice(-1))) {
             setCalc(calc.slice(0, -1) + value);
