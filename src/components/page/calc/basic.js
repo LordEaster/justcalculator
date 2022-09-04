@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 
-import "../css/styles.scss"
-import "../css/SimpleCalc.scss";
+import "../../css/styles.scss"
+import "../../css/calc/basic.scss";
 
-export default function SimpleCalc() {
+export default function CalcBasic() {
     useEffect(() => {
         document.title = "Basic Calculator | Math tools";
     });
@@ -56,8 +56,7 @@ export default function SimpleCalc() {
 
 
     return (
-        <div>
-        {/* <div className="Header fixed-top">Basic Calculator</div> */}
+        <div className="page-content">
         <div className="calculator">
             <div className="display">
                 {result ? <span>({result})</span> : '' }&nbsp; { calc || "0" }
