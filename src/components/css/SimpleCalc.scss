@@ -11,6 +11,17 @@
     box-sizing: border-box;
 }
 
+// .Header {
+//     background-color: var(--primary);
+//     color: var(--light);
+//     padding: .25rem;
+//     border-radius: .5rem;
+//     margin: 1rem;
+//     margin-top: 4.5rem;
+//     background-color: #fff;
+//     color: #000000;
+// }
+
 .calculator {
     width: 100%;
     max-width: 500px;
@@ -19,6 +30,7 @@
     overflow: hidden;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
     margin: 1rem auto;
+    margin-top: 7rem;
 
 }
 
@@ -26,31 +38,16 @@
     padding: 1rem;
     text-align: right;
     background-color: #fff;
-    font: 24px 300;
+    font-size: 2.5rem;
 }
 
 .display span {
-    font-size: 14px;
+    font-size: 1.5rem;
     color: #888;
-}
-
-button {
-    appearance: none;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transition: 0.4s;
-    font: 20px;
-    padding: 16px;
-    background-color: #fff;
 }
 
 button:hover {
     opacity: 0.6;
-}
-
-.operators {
-    display: flex;
 }
 
 .operators button {
@@ -59,29 +56,37 @@ button:hover {
 
 .ops {
     font-weight: 700;
+    font-size: large;
     background-color: #F699BA;
 }
 
 .equal {
     background-color: #53E0E1;
+    grid-column: 3/5;
+}
+
+.free {
+    background-color: transparent;
+    border: none;
+    pointer-events: none;
 }
 
 .digits {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .5rem;
+    background-color: #fff;
+    padding: 1rem;
 }
 
 .digits button {
-    flex: 1 1 25%;
-    max-width: 25%;
-}
-
-.zerobar {
+    height: 3.5rem;
+    padding: 10px;
+    border-radius: 10px;
     display: flex;
-    flex-wrap: wrap;
-}
-
-.zerobar button {
-    flex: 50%;
-    max-width: 50%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    font-size: 1.5rem;
 }
