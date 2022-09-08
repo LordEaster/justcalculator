@@ -1,3 +1,4 @@
+import 'base-conversion'
 import React, { useState } from 'react';
 
 import '../../css/styles.scss';
@@ -62,7 +63,7 @@ export default function ConvBase() {
                                 <input type="number" className="form-control" id="baseN" placeholder="Enter base" value={baseN} onChange={(e) => updateBaseN(e.target.value)} />
 
                                 <label htmlFor="numberN">Number N</label>
-                                <input type="number" className="form-control" id="numberN" placeholder="Enter number" value={numberN} onChange={(e) => updateNumberN(e.target.value)} />
+                                <input type="text" className="form-control" id="numberN" placeholder="Enter number" value={numberN} onChange={(e) => updateNumberN(e.target.value)} />
 
                             </div>
                         </form>

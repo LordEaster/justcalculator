@@ -9,6 +9,7 @@ export default function Nav() {
         <div class="sidebar" id="sidebar">
             <div class="p-4 sidebar-content">
                 
+                <div>
                 <h5 class="text-white">Calculator</h5>
                 <button className="btn btn-secondary btn-calc" onClick={() => {
                     window.location.href = "/calculator/basic";
@@ -18,10 +19,10 @@ export default function Nav() {
                     window.location.href = "/calculator/scientific";
                 }}>Scientific</button>
 
-                <button class="btn btn-secondary btn-calc dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled>
+                <button class="btn btn-secondary btn-calc dropdown-toggle" type="button" id="dropdown2" data-bs-toggle="dropdown" aria-expanded="false">
                 Matrix
                 </button>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu" aria-labelledby="dropdown2">
                     <li><a class="dropdown-item" href="/calculator/matrix/addition">Addition</a></li>
                     <li><a class="dropdown-item" href="/calculator/matrix/multiplication">Multiplication</a></li>
                 </ul>
@@ -29,13 +30,15 @@ export default function Nav() {
                 <button className="btn btn-secondary btn-calc" onClick={() => {
                     window.location.href = "/calculator/GCDLCM";
                 }}>GCD & LCM</button>
+                </div>
 
+                <div>
                 <h5 class="text-white">Converter</h5>
 
-                <button class="btn btn-secondary btn-conv dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-secondary btn-conv dropdown-toggle" type="button" id="dropdown1" data-bs-toggle="dropdown" aria-expanded="false">
                 Unit
                 </button>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu" aria-labelledby="dropdown1">
                     <li><a class="dropdown-item" href="/converter/unit/length">Length</a></li>
                     <li><a class="dropdown-item" href="/converter/unit/area">Area</a></li>
                     <li><a class="dropdown-item" href="/converter/unit/volume">Volume</a></li>
@@ -46,6 +49,7 @@ export default function Nav() {
                 <button className="btn btn-secondary btn-conv" onClick={() => {
                     window.location.href = "/converter/base";
                 }}>Base</button>
+                </div>
 
                 <h5 class="text-white">more . . .</h5>
 

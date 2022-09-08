@@ -13,7 +13,7 @@ export default function GCDLCM() {
     const [result, setResult] = useState("");
 
     function gcd(a, b) {
-        if (b == 0) {
+        if (b === 0) {
             return a;
         }
         return gcd(b, a % b);
