@@ -18,9 +18,17 @@ export default function Nav() {
                     window.location.href = "/calculator/scientific";
                 }}>Scientific</button>
 
-                <button className="btn btn-secondary btn-calc" disabled onClick={() => {
-                    window.location.href = "/calculator/matrix";
-                }}>Matrix</button>
+                <button class="btn btn-secondary btn-calc dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled>
+                Matrix
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/calculator/matrix/addition">Addition</a></li>
+                    <li><a class="dropdown-item" href="/calculator/matrix/multiplication">Multiplication</a></li>
+                </ul>
+
+                <button className="btn btn-secondary btn-calc" onClick={() => {
+                    window.location.href = "/calculator/GCDLCM";
+                }}>GCD & LCM</button>
 
                 <h5 class="text-white">Converter</h5>
 
@@ -35,11 +43,23 @@ export default function Nav() {
                     <li><a class="dropdown-item" href="/converter/unit/time">Time</a></li>
                 </ul>
 
-                <button className="btn btn-secondary btn-conv" disabled onClick={() => {
+                <button className="btn btn-secondary btn-conv" onClick={() => {
                     window.location.href = "/converter/base";
                 }}>Base</button>
 
                 <h5 class="text-white">more . . .</h5>
+
+                <button className="btn btn-secondary btn-more" onClick={() => {
+                    window.open("https://math.tools/");
+                }}>math.tools</button>
+
+                <button className="btn btn-secondary btn-more" onClick={() => {
+                    window.open("https://www.symbolab.com/");
+                }}>Symbolab</button>
+
+                <button className="btn btn-secondary btn-more" onClick={() => {
+                    window.open("https://www.desmos.com/calculator");
+                }}>Desmos | Graphing</button>
             </div>
         </div>
         <nav class="navbar fixed-top">
