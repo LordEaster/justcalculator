@@ -31,6 +31,8 @@ export default function Nav() {
 
                     <li><a class="dropdown-item" href="/calculator/matrix/transpose">Transpose</a></li>
 
+                    <li><a class="dropdown-item" href="/calculator/matrix/">Calculator</a></li>
+
                 </ul>
 
                 <button className="btn btn-secondary btn-calc" onClick={() => {

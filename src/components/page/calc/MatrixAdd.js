@@ -7,11 +7,13 @@ export default function MatrixAdd() {
 
     useEffect(() => {
         document.title = "Matrix Addition calculator | JustMaths";
+        setMatrixA(makeMatrix(m, n));
+        setMatrixB(makeMatrix(m, n));
     }, []);
 
     // make a matrix with given rows and columns by input form and dropdown for rows and columns
-    const [m, setm] = useState(2);
-    const [n, setn] = useState(2);
+    const [m, setm] = useState(3);
+    const [n, setn] = useState(3);
     const [matrixA, setMatrixA] = useState([]);
     const [matrixB, setMatrixB] = useState([]);
     const [result, setResult] = useState([]);
@@ -21,7 +23,7 @@ export default function MatrixAdd() {
         for (let i = 0; i < m; i++) {
             let row = [];
             for (let j = 0; j < n; j++) {
-                row.push(0);
+                row.push('');
             }
             matrix.push(row);
         }
@@ -80,9 +82,10 @@ export default function MatrixAdd() {
                   
     return (
         <div className='content' id='content'>
+            <h1 className="text-center">Matrix Addition</h1>
             <div className="item">
-                
-                <div className='matrix_setting'>Matrix Size
+                <div className='matrix_setting'>
+                <label className='label'>Matrix Size</label>
                 <label className='label'>m x n</label>
                 <div className='matrix_setting_mn'>
                     <div className="matrix_setting_row">
@@ -106,18 +109,19 @@ export default function MatrixAdd() {
                     </div>
                 </div>
                 </div>
+                <div className="outter-display">
                 <div className="matrix_display">
-                    <div className="matrix_display_matrix">
-                        <div className="matrix_display_matrix_title">Matrix A</div>
-                        <div className="matrix_display_matrix_content">
+                    <div className="matrixA">
+                        <div className="matrix_content">
+                        <div className="title">Matrix A</div>
                             {
                                 matrixA.map((row, i) => {
                                     return (
-                                        <div className="matrix_display_matrix_content_row" key={i}>
+                                        <div className="matrix_row" key={i}>
                                             {
                                                 row.map((column, j) => {
                                                     return (
-                                                        <input type="number" name={`${i},${j}`} value={column} onChange={handleMatrixAChange} key={j} />
+                                                        <input type="number" placeholder={`a-${i+1}-${j+1}`} name={`${i},${j}`} value={column} onChange={handleMatrixAChange} key={j} />
                                                     );
                                                 })
                                             }
@@ -127,17 +131,17 @@ export default function MatrixAdd() {
                             }
                         </div>
                     </div>
-                    <div className="matrix_display_matrix">
-                        <div className="matrix_display_matrix_title">Matrix B</div>
-                        <div className="matrix_display_matrix_content">
+                    <div className="matrixB">
+                        <div className="matrix_content">
+                        <div className="title">Matrix B</div>
                             {
                                 matrixB.map((row, i) => {
                                     return (
-                                        <div className="matrix_display_matrix_content_row" key={i}>
+                                        <div className="matrix_row" key={i}>
                                             {
                                                 row.map((column, j) => {
                                                     return (
-                                                        <input type="number" name={`${i},${j}`} value={column} onChange={handleMatrixBChange} key={j} />
+                                                        <input type="number" placeholder={`b-${i+1}-${j+1}`} name={`${i},${j}`} value={column} onChange={handleMatrixBChange} key={j} />
                                                     );
                                                 })
                                             }
@@ -148,22 +152,23 @@ export default function MatrixAdd() {
                         </div>
                     </div>
                     </div>
-                    <div className="matrix_display_button">
-                        <button onClick={handleAdd}>Enter</button>
-                        <button onClick={handleClear} >Clear</button>
                     </div>
-
-                    <div className="matrix_display_matrix">
-                        <div className="matrix_display_matrix_title">Result</div>
-                        <div className="matrix_display_matrix_content">
+                    <div className="matrix_button">
+                        <button className='btn btn-success' onClick={handleAdd}>Enter</button>
+                        <button className='btn btn-secondary' onClick={handleClear} >Clear</button>
+                    </div>
+                    
+                    <div className="result">
+                        <div className="title">Result</div>
+                        <div className="matrix_content">
                             {
                                 result.map((row, i) => {
                                     return (
-                                        <div className="matrix_display_matrix_content_row" key={i}>
+                                        <div className="matrix_row" key={i}>
                                             {
                                                 row.map((column, j) => {
                                                     return (
-                                                        <input type="number" name={`${i},${j}`} value={column} key={j} readOnly />
+                                                        <input placeholder={`${i+1}-${j+1}`} type="number" name={`${i},${j}`} value={column} key={j} readOnly />
                                                     );
                                                 })
                                             }

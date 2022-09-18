@@ -45,7 +45,7 @@ iframe {
 }
 
 .logo-head {
-  margin-left: 1rem;
+  margin-left: 0.75rem;
   font-weight: 400;
   font-size: 1.5rem;
   font-family: 'Open-Sans', sans-serif;
@@ -70,7 +70,8 @@ iframe {
   }
 
   .logo-head {
-    margin-left: 32vw
+    place-content: center;
+    text-align: center;
   }
 }
 

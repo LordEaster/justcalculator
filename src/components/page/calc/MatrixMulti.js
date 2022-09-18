@@ -7,34 +7,24 @@ export default function MatrixMulti() {
 
     useEffect(() => {
         document.title = "Matrix Multiplication calculator | JustMaths";
+        setMatrixA(makeMatrix(m, k));
+        setMatrixB(makeMatrix(k, n));
     }, []);
 
     // make a matrix with given rows and columns by input form and dropdown for rows and columns
-    const [m, setm] = useState(2);
-    const [k, setk] = useState(2);
-    const [n, setn] = useState(2);
+    const [m, setm] = useState(3);
+    const [k, setk] = useState(3);
+    const [n, setn] = useState(3);
     const [matrixA, setMatrixA] = useState([]);
     const [matrixB, setMatrixB] = useState([]);
     const [result, setResult] = useState([]);
 
-    const makeMatrixA = (m, k) => {
+    const makeMatrix = (m, n) => {
         let matrix = [];
         for (let i = 0; i < m; i++) {
             let row = [];
-            for (let j = 0; j < k; j++) {
-                row.push(0);
-            }
-            matrix.push(row);
-        }
-        return matrix;
-    }
-
-    const makeMatrixB = (k, n) => {
-        let matrix = [];
-        for (let i = 0; i < k; i++) {
-            let row = [];
             for (let j = 0; j < n; j++) {
-                row.push(0);
+                row.push('');
             }
             matrix.push(row);
         }
@@ -59,22 +49,22 @@ export default function MatrixMulti() {
 
     const handlemChange = (e) => {
         setm(e.target.value);
-        setMatrixA(makeMatrixA(e.target.value, k));
-        setMatrixB(makeMatrixB(k, n));
-        setResult(matrixMulti(makeMatrixA(e.target.value, k), makeMatrixB(k, n)));
+        setMatrixA(makeMatrix(e.target.value, k));
+        setMatrixB(makeMatrix(k, n));
+        setResult(matrixMulti(makeMatrix(e.target.value, k), makeMatrix(k, n)));
     }
 
     const handlekChange = (e) => {
         setk(e.target.value);
-        setMatrixA(makeMatrixA(m, e.target.value));
-        setMatrixB(makeMatrixB(e.target.value, n));
-        setResult(matrixMulti(makeMatrixA(m, e.target.value), makeMatrixB(e.target.value, n)));
+        setMatrixA(makeMatrix(m, e.target.value));
+        setMatrixB(makeMatrix(e.target.value, n));
+        setResult(matrixMulti(makeMatrix(m, e.target.value), makeMatrix(e.target.value, n)));
     }
 
     const handlenChange = (e) => {
         setn(e.target.value);
-        setMatrixB(makeMatrixB(k, e.target.value));
-        setResult(matrixMulti(makeMatrixA(m, k), makeMatrixB(k, e.target.value)));
+        setMatrixB(makeMatrix(k, e.target.value));
+        setResult(matrixMulti(makeMatrix(m, k), makeMatrix(k, e.target.value)));
     }
 
     const handleMatrixAChange = (e) => {
@@ -94,24 +84,25 @@ export default function MatrixMulti() {
     }
 
     const handleMulti = (e) => {
-        e.preventDefault();
         setResult(matrixMulti(matrixA, matrixB));
     }
 
     const handleClear = (e) => {
-        e.preventDefault();
-        setMatrixA(makeMatrixA(m, k));
-        setMatrixB(makeMatrixB(k, n));
-        setResult([]);
+        setMatrixA(makeMatrix(m, k));
+        setMatrixB(makeMatrix(k, n));
+        setResult(matrixMulti(matrixA, matrixB));
     }
 
     return (
-        <div className="matrix">
-                        <div className="matrix">
-                <div className='matrixA_setting'>Matrix A
+        <div className="content" id="content">
+            <h1 className="text-center">Matrix Multiplication</h1>
+                        <div className="item">
+                        <div className='matrix_setting'>
+                <label className='label'>Matrix A Size</label>
+                <label className='label'>m x k</label>
+                <div className='matrix_setting_mn'>
                     <div className="matrix_setting_row">
-                        <label htmlFor="m">m</label>
-                        <select name="m" id="m" value={m} onChange={handlemChange}>
+                        <select class= "form-select" name="m" id="m" value={m} onChange={handlemChange}>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -119,9 +110,9 @@ export default function MatrixMulti() {
                             <option value="5">5</option>
                         </select>
                     </div>
+                    x
                     <div className="matrix_setting_column">
-                        <label htmlFor="k">k</label>
-                        <select name="k" id="k" value={k} onChange={handlekChange}>
+                        <select class= "form-select" name="k" id="k" value={k} onChange={handlekChange}>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -130,10 +121,13 @@ export default function MatrixMulti() {
                         </select>
                     </div>
                 </div>
-                <div className='matrixB_setting'>Matrix B
+                </div>
+                <div className='matrix_setting'>
+                <label className='label'>Matrix B Size</label>
+                <label className='label'>k x n</label>
+                <div className='matrix_setting_mn'>
                     <div className="matrix_setting_row">
-                        <label htmlFor="k">k</label>
-                        <select name="k" id="k" value={k} onChange={handlekChange}>
+                        <select class= "form-select" name="k" id="k" value={k} onChange={handlekChange}>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -141,9 +135,9 @@ export default function MatrixMulti() {
                             <option value="5">5</option>
                         </select>
                     </div>
+                    x
                     <div className="matrix_setting_column">
-                        <label htmlFor="n">n</label>
-                        <select name="n" id="n" value={n} onChange={handlenChange}>
+                        <select class= "form-select" name="n" id="n" value={n} onChange={handlenChange}>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -152,18 +146,20 @@ export default function MatrixMulti() {
                         </select>
                     </div>
                 </div>
+                </div>
+                <div className="outter-display">
                 <div className="matrix_display">
-                    <div className="matrix_display_matrix">
-                        <div className="matrix_display_matrix_title">Matrix A</div>
-                        <div className="matrix_display_matrix_content">
+                    <div className="matrixA">
+                        <div className="matrix_content">
+                        <div className="title">Matrix A</div>
                             {
                                 matrixA.map((row, i) => {
                                     return (
-                                        <div className="matrix_display_matrix_content_row" key={i}>
+                                        <div className="matrix_row" key={i}>
                                             {
                                                 row.map((column, j) => {
                                                     return (
-                                                        <input type="number" name={`${i},${j}`} value={column} onChange={handleMatrixAChange} key={j} />
+                                                        <input type="number" placeholder={`a-${i+1}-${j+1}`} name={`${i},${j}`} value={column} onChange={handleMatrixAChange} key={j} />
                                                     );
                                                 })
                                             }
@@ -173,17 +169,17 @@ export default function MatrixMulti() {
                             }
                         </div>
                     </div>
-                    <div className="matrix_display_matrix">
-                        <div className="matrix_display_matrix_title">Matrix B</div>
-                        <div className="matrix_display_matrix_content">
+                    <div className="matrixB">
+                        <div className="matrix_content">
+                        <div className="title">Matrix B</div>
                             {
                                 matrixB.map((row, i) => {
                                     return (
-                                        <div className="matrix_display_matrix_content_row" key={i}>
+                                        <div className="matrix_row" key={i}>
                                             {
                                                 row.map((column, j) => {
                                                     return (
-                                                        <input type="number" name={`${i},${j}`} value={column} onChange={handleMatrixBChange} key={j} />
+                                                        <input type="number" placeholder={`b-${i+1}-${j+1}`} name={`${i},${j}`} value={column} onChange={handleMatrixBChange} key={j} />
                                                     );
                                                 })
                                             }
@@ -193,17 +189,24 @@ export default function MatrixMulti() {
                             }
                         </div>
                     </div>
-                    <div className="matrix_display_matrix">
-                        <div className="matrix_display_matrix_title">Result</div>
-                        <div className="matrix_display_matrix_content">
+                    </div>
+                    </div>
+                    <div className="matrix_button">
+                        <button className="btn btn-success" onClick={handleMulti}>Enter</button>
+                        <button className="btn btn-secondary" onClick={handleClear} >Clear</button>
+
+                    </div>
+                    <div className="result">
+                        <div className="title">Result</div>
+                        <div className="matrix_content">
                             {
                                 result.map((row, i) => {
                                     return (
-                                        <div className="matrix_display_matrix_content_row" key={i}>
+                                        <div className="matrix_row" key={i}>
                                             {
                                                 row.map((column, j) => {
                                                     return (
-                                                        <input type="number" name={`${i},${j}`} value={column} key={j} readOnly />
+                                                        <input type="number" placeholder={`${i+1}-${j+1}`} name={`${i},${j}`} value={column} key={j} readOnly />
                                                     );
                                                 })
                                             }
@@ -213,12 +216,6 @@ export default function MatrixMulti() {
                             }
                         </div>
                     </div>
-                    <div className="matrix_display_button">
-                        <button onClick={handleMulti}>Enter</button>
-                        <button onClick={handleClear} >Clear</button>
-
-                    </div>
-                </div>
             </div>
         </div>
     );

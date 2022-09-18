@@ -14,6 +14,7 @@ import MatrixAdd from './components/page/calc/MatrixAdd';
 import MatrixSub from './components/page/calc/MatrixSub';
 import MatrixMulti from './components/page/calc/MatrixMulti';
 import MatrixTranspose from './components/page/calc/MatrixTransp';
+import Matrix from './components/page/calc/Matrix';
 
 import ConvUnit from './components/page/conv/unit';
 import ConvUnitLength from './components/page/conv/unitlength';
@@ -39,6 +40,7 @@ function App() {
         <Route path="/calculator/matrix/subtraction" element={<MatrixSub />}/>
         <Route path="/calculator/matrix/multiplication" element={<MatrixMulti />}/>
         <Route path="/calculator/matrix/transpose" element={<MatrixTranspose />}/>
+        <Route path="/calculator/matrix/" element={<Matrix />}/>
 
         <Route path="/converter/unit" element={<ConvUnit />}/>
         <Route path="/converter/unit/length" element={<ConvUnitLength />}/>

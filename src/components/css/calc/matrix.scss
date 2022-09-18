@@ -1,5 +1,21 @@
+.matrix {
+    padding-top: 0;
+    margin-top: 0;
+    margin-top: calc(3.5rem - 46px);
+}
+
+.matrix iframe {
+    height: 94vh;
+}
+
+.label {
+    text-align: center;
+}
+
 .matrix_setting {
-    background-color: aqua;
+    display: grid;
+    place-content: center;
+    // background-color: aqua;
     max-width: 500px;
     margin: 0 auto;
     border-radius: 0.5rem;
@@ -33,42 +49,86 @@
     height: 100%;
 }
 
-
-.matrix_display {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    background-color: aqua;
-    justify-content: center;
-    height: 100%;
-    margin-bottom: 2rem;
+select {
+    width: 5rem;
 }
 
-.matrix_display_matrix_title {
+.outter-display {
     display: flex;
-    justify-content: center;
-}
-
-.matrix_display_matrix_content {
-    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
-    margin-top: 0.5rem;
-    border-color: black;
-    border-radius: 0.5rem;
-    padding: 0.25rem;
-    padding-top: 0%;
 }
 
-.matrix_display_matrix_content_row {
-    display: -ms-grid;
-    max-width: fit-content;
-    margin-bottom: 1rem;
+.matrix_display {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 1000px;
+    // background-color: aqua;
+    height: 100%;
 }
 
-.matrix_display_matrix_content_row input {
-    max-width: 5rem;
+@media (max-width: 992px) {
+    .matrix_display {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
+.matrix_display-tran {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
     padding: 0.5rem;
-    padding-top: 0%;
+}
+
+.matrixA {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    padding: 0.5rem;
+}
+
+.matrixB {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    padding: 0.5rem;
+}
+
+.matrix_button {
+    display: flex;
+    justify-content: center;
+}
+
+.result {
+    display: grid;
+    justify-content: center;
+    height: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+}
+
+.matrix_content {
+    display: grid;
+    max-width: 500px;
+}
+
+.matrix_row {
+    display: flex;
+}
+
+.matrix_row input {
+    width: 4rem;
+    margin: 0.125rem;
 }
