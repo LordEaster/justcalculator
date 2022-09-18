@@ -22,7 +22,12 @@
 //     color: #000000;
 // }
 
+.crop {
+    padding-top: 5rem;
+}
+
 .calculator {
+    display: grid;
     width: 100%;
     max-width: 500px;
     background-color: #f3efef;
@@ -30,7 +35,6 @@
     overflow: hidden;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
     margin: 1rem auto;
-    margin-top: 7rem;
 }
 
 .display {
@@ -51,17 +55,20 @@ button:hover {
 
 .operators button {
     flex: 1 1 0%;
+    color: #000;
 }
 
 .ops {
     font-weight: 700;
     font-size: large;
     background-color: #F699BA;
+    color: #000;
 }
 
 .equal {
     background-color: #53E0E1;
     grid-column: 3/5;
+    color: #000;
 }
 
 .free {
@@ -76,6 +83,7 @@ button:hover {
     gap: .5rem;
     background-color: #fff;
     padding: 1rem;
+    color: #000;
 }
 
 .digits button {
@@ -88,4 +96,5 @@ button:hover {
     cursor: pointer;
     border: none;
     font-size: 1.5rem;
+    color: #000;
 }

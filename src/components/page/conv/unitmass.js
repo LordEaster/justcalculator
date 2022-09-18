@@ -72,8 +72,9 @@ export default function ConvUnitMass() {
 
 
     return (
-        <div>
-            <div className="form-group">
+        <div className='content' id='content'>
+            <h1 className="text-center">Mass Converter</h1>
+            <div className="item">
                 <div className="item-box">
                 Kilogram
                 <input type="number" className="form-control" value={kg} onChange={e => updateKg(e.target.value)} />

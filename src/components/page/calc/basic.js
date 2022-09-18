@@ -88,7 +88,8 @@ export default function CalcBasic() {
 
 
     return (
-        <div className="page-content">
+        <div className="content" id="content">
+        <div className="crop">
         <div className="calculator">
             <div className="display">
                 {result ? <span>({result})</span> : '' }&nbsp; { calc || "0" }
@@ -121,6 +122,7 @@ export default function CalcBasic() {
                 <button onClick={() => updateCalc('.')}>.</button>
                 <button className="ops equal" onClick={calculate}>=</button>
             </div>
+        </div>
         </div>
         </div>
     );

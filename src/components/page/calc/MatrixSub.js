@@ -1,26 +1,26 @@
-import React, { useEffect ,useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import '../../css/styles.scss';
-import '../../css/calc/matrix.scss';
+import "../../css/styles.scss";
+import "../../css/calc/matrix.scss";
 
-export default function MatrixAdd() {
+export default function MatrixSub() {
 
     useEffect(() => {
-        document.title = "Matrix Addition calculator | JustMaths";
+        document.title = "Matrix Subtraction calculator | JustMaths";
     }, []);
 
     // make a matrix with given rows and columns by input form and dropdown for rows and columns
-    const [m, setm] = useState(2);
-    const [n, setn] = useState(2);
+    const [rows, setRows] = useState(2);
+    const [columns, setColumns] = useState(2);
     const [matrixA, setMatrixA] = useState([]);
     const [matrixB, setMatrixB] = useState([]);
     const [result, setResult] = useState([]);
 
-    const makeMatrix = (m, n) => {
+    const makeMatrix = (rows, columns) => {
         let matrix = [];
-        for (let i = 0; i < m; i++) {
+        for (let i = 0; i < rows; i++) {
             let row = [];
-            for (let j = 0; j < n; j++) {
+            for (let j = 0; j < columns; j++) {
                 row.push(0);
             }
             matrix.push(row);
@@ -28,12 +28,12 @@ export default function MatrixAdd() {
         return matrix;
     }
 
-    const matrixAdd = (matrixA, matrixB) => {
+    const matrixSub = (matrixA, matrixB) => {
         let result = [];
         for (let i = 0; i < matrixA.length; i++) {
             let row = [];
             for (let j = 0; j < matrixA[i].length; j++) {
-                row.push(parseInt(matrixA[i][j]) + parseInt(matrixB[i][j]));
+                row.push(parseInt(matrixA[i][j]) - parseInt(matrixB[i][j]));
             }
             result.push(row);
         }
@@ -56,37 +56,37 @@ export default function MatrixAdd() {
         setMatrixB(matrix);
     }
 
-    const handlemChange = (e) => {
-        setm(e.target.value);
-        setMatrixA(makeMatrix(e.target.value, n));
-        setMatrixB(makeMatrix(e.target.value, n));
+    const handleRowsChange = (e) => {
+        setRows(e.target.value);
+        setMatrixA(makeMatrix(e.target.value, columns));
+        setMatrixB(makeMatrix(e.target.value, columns));
+        setResult(makeMatrix(e.target.value, columns));
     }
 
-    const handlenChange = (e) => {
-        setn(e.target.value);
-        setMatrixA(makeMatrix(m, e.target.value));
-        setMatrixB(makeMatrix(m, e.target.value));
+    const handleColumnsChange = (e) => {
+        setColumns(e.target.value);
+        setMatrixA(makeMatrix(rows, e.target.value));
+        setMatrixB(makeMatrix(rows, e.target.value));
+        setResult(makeMatrix(rows, e.target.value));
     }
 
-    const handleAdd = () => {
-        setResult(matrixAdd(matrixA, matrixB));
+    const handleSub = (e) => {
+        setResult(matrixSub(matrixA, matrixB));
     }
 
-    const handleClear = () => {
-        setMatrixA(makeMatrix(m, n));
-        setMatrixB(makeMatrix(m, n));
-        setResult(makeMatrix(m, n));
+    const handleClear = (e) => {
+        setMatrixA(makeMatrix(rows, columns));
+        setMatrixB(makeMatrix(rows, columns));
+        setResult(makeMatrix(rows, columns));
     }
-                  
+
     return (
-        <div className='content' id='content'>
-            <div className="item">
-                
-                <div className='matrix_setting'>Matrix Size
-                <label className='label'>m x n</label>
-                <div className='matrix_setting_mn'>
+        <div className="matrix">
+            <div className="matrix">
+                <div className='matrix_setting'>
                     <div className="matrix_setting_row">
-                        <select class= "form-select" name="m" id="m" value={m} onChange={handlemChange}>
+                        <label htmlFor="rows">Rows</label>
+                        <select name="rows" id="rows" value={rows} onChange={handleRowsChange}>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -94,9 +94,9 @@ export default function MatrixAdd() {
                             <option value="5">5</option>
                         </select>
                     </div>
-                    x
                     <div className="matrix_setting_column">
-                        <select class= "form-select" name="n" id="n" value={n} onChange={handlenChange}>
+                        <label htmlFor="columns">Columns</label>
+                        <select name="columns" id="columns" value={columns} onChange={handleColumnsChange}>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -104,7 +104,6 @@ export default function MatrixAdd() {
                             <option value="5">5</option>
                         </select>
                     </div>
-                </div>
                 </div>
                 <div className="matrix_display">
                     <div className="matrix_display_matrix">
@@ -147,12 +146,6 @@ export default function MatrixAdd() {
                             }
                         </div>
                     </div>
-                    </div>
-                    <div className="matrix_display_button">
-                        <button onClick={handleAdd}>Enter</button>
-                        <button onClick={handleClear} >Clear</button>
-                    </div>
-
                     <div className="matrix_display_matrix">
                         <div className="matrix_display_matrix_title">Result</div>
                         <div className="matrix_display_matrix_content">
@@ -173,7 +166,13 @@ export default function MatrixAdd() {
                             }
                         </div>
                     </div>
+                    <div className="matrix_display_button">
+                        <button onClick={handleSub}>Enter</button>
+                        <button onClick={handleClear} >Clear</button>
+
+                    </div>
+                </div>
             </div>
-        </div>  
+        </div>
     );
 }

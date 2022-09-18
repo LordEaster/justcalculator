@@ -263,8 +263,9 @@ export default function ConvUnitTime() {
     }
 
     return (
-        <div>
-            <div className="form-group">
+        <div className="content" id="content">
+            <h1 className="text-center">Time Converter</h1>
+            <div className="item">
                 <div className="item-box">
                 Second
                 <input type="number" className="form-control" value={s} onChange={e => updateS(e.target.value)} />

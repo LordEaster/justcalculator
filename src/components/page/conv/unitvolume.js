@@ -88,8 +88,9 @@ export default function ConvUnitVolume() {
     }
 
     return (
-        <div>
-            <div className="form-group">
+        <div className='content' id='content'>
+            <h1 className="text-center">Volume Converter</h1>
+            <div className="item">
                 <div className="item-box">
                 Cubic Meter
                 <input type="number" className="form-control" value={cubicmeter} onChange={(e) => updatecubicmeter(e.target.value)} />

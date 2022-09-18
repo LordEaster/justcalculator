@@ -36,29 +36,25 @@ export default function GCDLCM() {
 
 
     return (
-        <div>
-            <div className="container">
-                <div className="row">
-                    <div className="col-12">
-                        <h1 className="text-center">GCD & LCM Calculator</h1>
-                        <p className="text-center">Enter two numbers to calculate their GCD and LCM.</p>
+        <div className="content" id="content">
+            <div className="col-12">
+                <h1 className="text-center">GCD & LCM Calculator</h1>
+                <p className="text-center">Enter two numbers to calculate their GCD and LCM.</p>
 
-                        <form className="form-inline justify-content-center">
-                            <div className="form-group">
-                                <label htmlFor="input1">Enter number</label>
-                                <input type="text" className="form-control" id="input1" placeholder="split number with , (comma)" onChange={(e) => setInput(e.target.value)} />
+                <form>
+                    <div className="item">
+                        <label htmlFor="input1">Enter number</label>
+                        <input type="text" className="form-control" id="input1" placeholder="split number with , (comma)" onChange={(e) => setInput(e.target.value)} />
 
-                                <button type="submit" className="btn btn-primary" onClick={(e) => {
-                                    e.preventDefault();
-                                    setResult(gcdlcm(input));
-                                }}>Calculate</button>
+                        <button type="submit" className="btn btn-success btn-submit" onClick={(e) => {
+                            e.preventDefault();
+                            setResult(gcdlcm(input));
+                        }}>Calculate</button>
 
-                                <p className="result">GCD {result[0]}</p>
-                                <p className="result">LCM {result[1]}</p>
-                            </div>
-                        </form>
+                        <p className="result">GCD : {result[0]}</p>
+                        <p className="result">LCM : {result[1]}</p>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     )

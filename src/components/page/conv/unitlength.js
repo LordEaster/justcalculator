@@ -234,8 +234,9 @@ export default function ConvUnitLength() {
 
 
     return (
-        <div>
-        <div className="form-group">
+        <div className="content" id="content">
+            <h1 className="text-center">Length Converter</h1>
+        <div className="item">
             <div className="item-box">
             Meter
             <input type="number" className="form-control" value={meter} onChange={(e) => updateMeter(e.target.value)} />

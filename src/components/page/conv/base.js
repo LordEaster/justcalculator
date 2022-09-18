@@ -6,69 +6,69 @@ import '../../css/conv/base.scss';
 
 export default function ConvBase() {
 
-    const [baseM, setBaseM] = useState(10);
-    const [baseN, setBaseN] = useState(2);
-    const [numberM, setNumberM] = useState(0);
-    const [numberN, setNumberN] = useState(0);
+    const [input, setInput] = useState("");
+    const [result, setResult] = useState("");
+    const [base, setBase] = useState(2);
+    const [base2, setBase2] = useState(2);
 
-    const convertBase = (number, base) => {
-        let result = '';
-        let remainder = 0;
-        let quotient = number;
-        while (quotient > 0) {
-            remainder = quotient % base;
-            quotient = Math.floor(quotient / base);
-            result = remainder + result;
+    const converttodecimal = (number, base) => {
+        const digits = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        number = number.toUpperCase();
+        let val = 0;
+        for (let i = 0; i < number.length; i++) {
+            val *= base;
+            val += digits.indexOf(number[i]);
         }
-        return result;
+        return val;
+    }
+    
+    const converttobase = (number, base) => {
+        const digits = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        let val = '';
+        while (number > 0) {
+            val = digits[number % base] + val;
+            number = Math.floor(number / base);
+        }
+        return val;
     }
 
-    const updateNumberM = (value) => {
-        setNumberM(value);
-        setNumberN(convertBase(value, baseN));
+    const make_option = () => {
+        let options = [];
+        for (let i = 2; i <= 36; i++) {
+            options.push(<option value={i}>{i}</option>);
+        }
+        return options;
     }
-
-    const updateNumberN = (value) => {
-        setNumberN(value);
-        setNumberM(convertBase(value, baseM));
-    }
-
-    const updateBaseM = (value) => {
-        setBaseM(value);
-        setNumberN(convertBase(numberM, value));
-    }
-
-    const updateBaseN = (value) => {
-        setBaseN(value);
-        setNumberM(convertBase(numberN, value));
-    }
-
     return (
-        <div className="conv-base">
-            <div className="container">
-                <div className="row">
-                    <div className="col-12">
-                        <h1 className="text-center">Base Converter</h1>
-                        <p className="text-center">Convert a number from one base to another.</p>
+        <div className="content conv-base" id='content'>
+            <div className="col-12">
+                <h1 className="text-center">Base Converter</h1>
+                <p className="text-center">Convert number from one base to another.</p>
 
-                        <form className="form-inline justify-content-center">
-                            <div className="form-group">
-                                <label htmlFor="baseM">Base M</label>
-                                <input type="number" className="form-control" id="baseM" placeholder="Enter base" value={baseM} onChange={(e) => updateBaseM(e.target.value)} />
+                <form className="form-inline justify-content-center">
+                    <div className="item">
+                        <label htmlFor="input1">Enter number</label>
+                        <input type="text" className="form-control" id="input1" placeholder="number" onChange={(e) => setInput(e.target.value)} />
 
-                                <label htmlFor="numberM">Number M</label>
-                                <input type="number" className="form-control" id="numberM" placeholder="Enter number" value={numberM} onChange={(e) => updateNumberM(e.target.value)} />
+                        <label htmlFor="base1">From Base</label>
+                        <select className="form-control" id="base1" onChange={(e) => setBase(e.target.value)}>
+                            {make_option()}
+                        </select>
 
-                                <label htmlFor="baseN">Base N</label>
-                                <input type="number" className="form-control" id="baseN" placeholder="Enter base" value={baseN} onChange={(e) => updateBaseN(e.target.value)} />
+                        <label htmlFor="base2">To Base</label>
+                        <select className="form-control" id="base2" onChange={(e) => setBase2(e.target.value)}>
+                            {make_option()}
+                        </select>
 
-                                <label htmlFor="numberN">Number N</label>
-                                <input type="text" className="form-control" id="numberN" placeholder="Enter number" value={numberN} onChange={(e) => updateNumberN(e.target.value)} />
+                        <button type="submit" className="btn btn-success btn-submit" onClick={(e) => {
+                            e.preventDefault();
+                            setResult(converttobase(converttodecimal(input, base), base2));
+                        }}>Convert</button>
 
-                            </div>
-                        </form>
+                        <p className="result">Result : {result}</p>
+
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     );
