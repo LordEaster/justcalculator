@@ -75,6 +75,14 @@ export default function Nav() {
                 <button className="btn btn-secondary btn-more" onClick={() => {
                     window.open("https://www.geogebra.org/");
                 }}>GeoGebra</button>
+
+                <button className="btn btn-secondary btn-more" onClick={() => {
+                    window.open("https://www.rapidtables.com/");
+                }}>rapidtables</button>
+
+                <button className="btn btn-secondary btn-more" onClick={() => {
+                    window.open("https://www.inchcalculator.com/");
+                }}>inchcalculator</button>
             </div>
         </div>
         <nav class="navbar fixed-top">
