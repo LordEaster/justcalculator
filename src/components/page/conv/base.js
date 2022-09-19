@@ -1,10 +1,14 @@
 import 'base-conversion'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import '../../css/styles.scss';
 import '../../css/conv/base.scss';
 
 export default function ConvBase() {
+
+    useEffect(() => {
+        document.title = "Base Conversion | JustMaths";
+    }, []);
 
     const [input, setInput] = useState("");
     const [result, setResult] = useState("");
